@@ -1,36 +1,39 @@
-package project_java;
+package 실행연습;
 
 import java.util.Scanner;
 
-public class Drop_check {
+public class Exprience {
 
 	public static void main(String[] args) {
 		
-		int Life = 1 ; // 게임 당 라이프 갯수
+		int Life = 5 ; // 게임 당 라이프 갯수
 		int correct = 0 ;	// 맞춘 갯수
 		int wrong = 0 ; // 틀린 갯수
-		double rate =  0;  // 정확도
+		double rate ;  // 정확도
 		
 		Scanner sc = new Scanner(System.in);
 		String input;
 		
 		while(Life > 0) {		//Life가 0이 될 때까지 플레이한다(Life 1에서 틀리면 Game over)
 			
-			input = sc.next();		// 키보드로 문자열을 입력받는다.
-			String word_rain = "" ; // 떨어지는 단어(데이터베이스에서 무작위 호출)
+			input = sc.nextLine();		// 키보드로 문자열을 입력받는다.(엔터를 누르면 무조건 취소)
+			String word_rain = "고자라니" ; // 떨어지는 단어(데이터베이스에서 무작위 호출)
 			
-			if(word_rain == input) {	
+			if(word_rain.equals(input)) {	
 				correct ++ ;	// 맞춘 갯수 상승
 				
 			}
 			else{
-				wrong-- ;	// 틀릴 경우 오답횟수 및 라이프 차감.
+				wrong++ ;	// 틀릴 경우 오답횟수 및 라이프 차감.
 				Life--;
 			}
 		}
 		
-		rate = correct / (correct + wrong);	// 정답률 기록
+		rate = correct *100 / (correct + wrong);	// 정답률 기록
 		
 		sc.close(); // 입력 중단
+		System.out.println(correct);
+		System.out.println(wrong);
+		System.out.println(rate);		// 확인용 출력
 	}
 }
