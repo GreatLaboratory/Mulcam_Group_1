@@ -1,0 +1,48 @@
+package project_java;
+
+import java.util.Scanner;
+
+public class Speed_check{
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String N = sc.next(); // Enter를 눌러 프로그램 시작
+		long start_time = 0;
+		long end_time = 0;
+		long take_time = 0;
+		int count ;
+		int type_per_min ;
+		double rate ;
+		
+		String typing = "";
+		String exam = "";
+		
+		switch(N) {
+		case "" :	{
+			exam = "" ; // 데이터 베이스에서 무작위 문장 호출
+			
+			start_time = System.currentTimeMillis();
+			typing = sc.next();
+			sc.close();
+			end_time = System.currentTimeMillis();
+			
+			take_time = (end_time - start_time) / 60000 ;
+			count = 0;
+			type_per_min =0;
+			rate = 0;
+			
+			for (int i = 0; i < exam.length(); i++) {
+				if(typing.charAt(i)==exam.charAt(i)) {
+					count ++;
+				}
+			}
+			rate = (count / exam.length()) * 100;
+			type_per_min = count / ((int)take_time);
+			
+		}
+	}
+}
+}
+
+ 
