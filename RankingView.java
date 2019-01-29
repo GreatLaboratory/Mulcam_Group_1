@@ -117,6 +117,6 @@ public class RankingView extends JFrame {
 		contentPane.add(btn_main);
 		
 		
-		setVisible(true);
+		setVisible(false);
 	}
 }
