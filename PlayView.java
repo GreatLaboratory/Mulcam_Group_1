@@ -16,13 +16,15 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import calculating.Cal;	// 채점 및 변환 프로그램과 연동
+
 
 public class PlayView extends JFrame {
 	
 	JPanel LowerPanel, UpperPanel, PlayPanel;
 //	
 	JTextField input_text = new JTextField (40);
-	JLabel la_life,  la_level, la_score, la_best, la_time, la_notice;
+	public JLabel la_life,  la_level, la_score, la_best, la_time, la_notice; // public 추가
 //	
 	BorderLayout bd = new BorderLayout();
 //	
@@ -34,6 +36,8 @@ public class PlayView extends JFrame {
 	
 	boolean isitthefirst = false; // 원랜 false였음
 	boolean onlyfortimer = true;
+	
+	Cal c;		// 채점 프로그램과 연결
 	
 	Drop d = new Drop();
 	Drop d1 = new Drop();
@@ -54,6 +58,9 @@ public class PlayView extends JFrame {
 		LowerPanel = new JPanel ();
 		UpperPanel = new JPanel ();
 		PlayPanel = new JPanel ();
+		
+		
+		c = new Cal(this); // 채점 연산자 
 		
 		la_life = new JLabel ("Life : ★ ★ ★");
 		 la_level = new JLabel ("Level : ★ ★ ★");
