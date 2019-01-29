@@ -1,5 +1,4 @@
 package game;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -25,6 +24,7 @@ public class PlayView extends JFrame {
 //	
 	BorderLayout bd = new BorderLayout();
 //	
+	public WordsDAO dao;
 	public JButton btn_back;
 	JButton btn_over; // 일단 생성만하고 아래엔 주석처리해놓음
 //	
@@ -39,7 +39,7 @@ public class PlayView extends JFrame {
 	Drop d3 = new Drop();
 	
 	public PlayView() {
-				
+				dao = new WordsDAO();
 		LowerPanel = new JPanel ();
 		UpperPanel = new JPanel ();
 		PlayPanel = new JPanel ();
@@ -74,15 +74,15 @@ public class PlayView extends JFrame {
 	  PlayPanel.add(d);
 	
 	  d1.setBounds(0, 0, 100, 30); // 두번째 쓰레드 생성만해놓음
-	  d1.setText("두번째다잉");
+	  d1.setText(dao.select());
 	  PlayPanel.add(d1);
 	  
 	  d2.setBounds(0, 0, 100, 30); // 세번째 쓰레드 생성만해놓음
-	  d2.setText("세번째다잉");
+	  d2.setText(dao.select());
 	  PlayPanel.add(d2);
 	  
 	  d3.setBounds(0, 0, 100, 30); // 네번째 쓰레드 생성만해놓음
-	  d3.setText("네번째다잉");
+	  d3.setText(dao.select());
 	  PlayPanel.add(d3);
 	  
 	  new Thread(d).start(); // 첫번째 쓰레드 시작!
