@@ -1,81 +1,102 @@
-package com.mulcam.typing_game.control;
+package com.mulcam.typing_game.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 
-import com.mulcam.typing_game.model.GamerDAO;
-import com.mulcam.typing_game.model.GamerVO;
-import com.mulcam.typing_game.view.InputForm;
-import com.mulcam.typing_game.view.MainView;
-import com.mulcam.typing_game.view.PlayView;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class Controller implements ActionListener {
-	MainView mainView;
-	InputForm form;
-	PlayView play;
+//public class PlayView {
+//	public static void main(String[] args) {
+//		new Play_Frame();
+//	}
+//}
 
-	public Controller() {
-		mainView = new MainView();
-		form = new InputForm();
-		play = new PlayView();
-		eventUp();
+public class PlayView extends JFrame {
+	
+	JPanel LowerPanel, UpperPanel, PlayPanel;
+	
+	JTextField input_text;
+	JLabel la_life, la_level, la_score, la_best, la_time;
+	
+	BorderLayout bd = new BorderLayout();
+	
+	public JButton btn_back;
+	
+	boolean isitthefirst = true;
+	boolean onlyfortimer = true;
+	
+	public PlayView() {
+		LowerPanel = new JPanel ();
+		UpperPanel = new JPanel ();
+		PlayPanel = new JPanel ();
+		input_text = new JTextField (40);
+		
+		la_life = new JLabel ("Life : ★ ★ ★");
+		la_level = new JLabel ("Level : ★ ★ ★");
+		la_score = new JLabel ("Score : ★ ★ ★");
+		la_best = new JLabel ("Best Score : ★ ★ ★");
+		la_time = new JLabel ("Time Left : ");
+		
+		btn_back = new JButton(" << ");
+	//UpperPanel============================
+	UpperPanel.setLayout(new FlowLayout(1,20,10));
+
+	UpperPanel.add(btn_back);
+	UpperPanel.add(la_level);
+	UpperPanel.add(la_score);
+	UpperPanel.add(la_best);
+	UpperPanel.add(la_time);
+	
+	UpperPanel.setBackground(Color.BLACK);
+	
+	la_level.setForeground(Color.white);
+	la_score.setForeground(Color.white);
+	la_best.setForeground(Color.white);
+	la_time.setForeground(Color.white);
+	
+	
+	// LowerPanel============================
+	
+	LowerPanel.add(input_text);
+	LowerPanel.add(la_life);
+	
+//	input_text.addActionListener(this); <-- 얘가 문제!
+	//프레임 성격 ==============================
+	
+	add(UpperPanel, bd.NORTH);
+	add(LowerPanel, bd.SOUTH);
+	
+	setSize(600,700);
+	setLocationRelativeTo(null);
+	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	setResizable(false);
+	setVisible(false);
+		
 	}
 
-	private void eventUp() {// 이벤트 등록
-		// ----mainView----
-		//mainView.btn_input.addActionListener(this);        ---  정보입력 버튼 / 나중에 게임 끝나고 불러오자
-		mainView.btn_rainfall.addActionListener(this);
+	
+//    public void timer() {
+//    int k = 60;
+//    while(true)
+//    {
+//    	TimerLabel.setText(""+k);
+//    	try {
+//    		Thread.sleep(1000);
+//    	} catch (InterruptedException e) {
+//    		e.printStackTrace();
+//    	}
+//    	k--; ;
+//    }
+//	}
 
-		// ----inputForm----
-		form.bt_submit.addActionListener(this);
-		// -----playview-----
-		play.btn_back.addActionListener(this);
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		timer();  <-- 얘가 문제!!! 
+//	}
 
-		// 입력폼의 우측상단 'X'버튼 클릭시 메인화면으로 이동
-		form.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				form.setVisible(false);
-				mainView.setVisible(true);
-			}
-		});
-	}
-
-	public void actionPerformed(ActionEvent e) {// 이벤트 처리부(요청 분석)
-		Object ob = e.getSource();// 이벤트 소스의 레퍼런스 얻어오기
-		
-		
-//		if (ob == mainView.btn_input) {//                  메인뷰 입력버튼 클릭 / 나중에 게임 끝나고 불러오자
-//			mainView.setVisible(false);
-//			form.setVisible(true);
-//		} else if (ob == form.bt_submit) {// 입력폼 입력버튼 클릭
-//			// from : 입력폼 뷰, to : DB
-//			String id = form.tf_id.getText();
-//			int score = 0;
-//			GamerVO vo = new GamerVO(id, score);
-//
-//			GamerDAO dao = new GamerDAO();
-//			if (dao.insert(vo)) {
-//				form.showMsg("입력성공!!");
-//				form.setVisible(false);
-//				mainView.setVisible(true);
-//			}
-//		} 
-		
-		
-		if (ob == mainView.btn_rainfall) {// 메인뷰 비내리기 버튼 클릭
-			mainView.setVisible(false);
-			play.setVisible(true);
-		} else if (ob == play.btn_back) {
-			mainView.setVisible(true);
-			play.setVisible(false);
-		}
-		
-	}
-
-	public static void main(String[] args) {
-		new Controller();
-	}
 }
