@@ -2,14 +2,12 @@ package com.mulcam.typing_game.view;
 
 import javax.swing.JLabel;
 
-import com.mulcam.typing_game.model.WordsDAO;
-
 public class Drop extends JLabel implements Runnable{
-	WordsDAO dao;
+	 WordsDAO dao ;
+	 
 	public Drop() {
 		dao = new WordsDAO();
 		setText(dao.select());
-		
 	}
 	@Override
 	public void run() {
@@ -20,7 +18,7 @@ public class Drop extends JLabel implements Runnable{
 				
 				setLocation ( i ,j );
 				try {
-					Thread.sleep(100 - 2*(PlayView.sec / 5) ); // 수정한 부분
+					Thread.sleep(100 - (PlayView.sec / 5) ); // 수정한 부분
 									// 5의 배수의 시간이 흐를 때마다 점점 속도증가
 					//System.out.println("ch");
 				} catch (Exception e) {
