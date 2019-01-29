@@ -3,26 +3,26 @@ package com.mulcam.typing_game.model;
 
 
 public class GamerVO {
-  //DBÅ×ÀÌºí(member)ÀÇ ·¹ÄÚµå(Çàrow)¸¦ Ç¥ÇöÇÏ´Â Å¬·¡½º 
-	private int no;
+  //DBí…Œì´ë¸”(member)ì˜ ë ˆì½”ë“œ(í–‰row)ë¥¼ í‘œí˜„í•˜ëŠ” í´ë˜ìŠ¤ 
 	private String id;
-	
+	private int score;
 	public GamerVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public GamerVO(int no, String id) {
+	public GamerVO(String id, int score) {
 		super();
-		this.no = no;
+		this.score = score;
 		this.id = id;
 	}
 
-	public int getNo() {
-		return no;
+
+	public int getScore() {
+		return score;
 	}
 
-	public void setNo(int no) {
-		this.no = no;
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	public String getId() {
