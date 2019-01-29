@@ -34,6 +34,10 @@ public class Controller implements ActionListener {
 		// -----playview-----
 		play.btn_back.addActionListener(this);
 
+		// ----rainkingview-----
+		rank.btn_main.addActionListener(this);
+
+		
 		// 입력폼의 우측상단 'X'버튼 클릭시 메인화면으로 이동
 		form.addWindowListener(new WindowAdapter() {
 			@Override
@@ -69,7 +73,10 @@ public class Controller implements ActionListener {
 		if (ob == mainView.btn_rainfall) {// 메인뷰 비내리기 버튼 클릭
 			mainView.setVisible(false);
 			play.setVisible(true);
-		} else if (ob == play.btn_back) {
+		} else if (ob == play.btn_back) {// play뷰에서 메인뷰로 이동하는 버튼 클릭
+			mainView.setVisible(true);
+			play.setVisible(false);
+		} else if (ob == rank.btn_main) {// ranking뷰에서 메인뷰로 이동하는 버튼 클릭
 			mainView.setVisible(true);
 			play.setVisible(false);
 		}
