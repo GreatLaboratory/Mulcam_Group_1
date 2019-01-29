@@ -11,57 +11,68 @@ import com.mulcam.typing_game.view.InputForm;
 import com.mulcam.typing_game.view.MainView;
 import com.mulcam.typing_game.view.PlayView;
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener {
 	MainView mainView;
 	InputForm form;
 	PlayView play;
+
 	public Controller() {
 		mainView = new MainView();
 		form = new InputForm();
 		play = new PlayView();
 		eventUp();
 	}
-	
-	private void eventUp(){//ÀÌº¥Æ® µî·Ï
-		   //----mainView----
-		   mainView.btn_input.addActionListener(this);
-		   mainView.btn_rainfall.addActionListener(this);
-		   
-		   //----inputForm,upForm----
-		   form.bt_submit.addActionListener(this);
-		   
-		   //ÀÔ·ÂÆûÀÇ ¿ìÃø»ó´Ü 'X'¹öÆ° Å¬¸¯½Ã  ¸ŞÀÎÈ­¸éÀ¸·Î ÀÌµ¿
-		   form.addWindowListener(new WindowAdapter() {
-			   @Override
-			  public void windowClosing(WindowEvent e) {
-				  form.setVisible(false);
-				  mainView.setVisible(true);
-			  }
-		   });
-	   }
 
-	public void actionPerformed(ActionEvent e) {// ÀÌº¥Æ® Ã³¸®ºÎ(¿äÃ» ºĞ¼®)
-		Object ob = e.getSource();// ÀÌzº¥Æ® ¼Ò½ºÀÇ ·¹ÆÛ·±½º ¾ò¾î¿À±â
-		if (ob == mainView.btn_input) {// ¸ŞÀÎºä ÀÔ·Â¹öÆ° Å¬¸¯
-			mainView.setVisible(false);
-			form.setVisible(true);
-		} else if (ob == form.bt_submit) {// ÀÔ·ÂÆû ÀÔ·Â¹öÆ° Å¬¸¯
-			// from : ÀÔ·ÂÆû ºä, to : DB
-			String id = form.tf_id.getText();
+	private void eventUp() {// ì´ë²¤íŠ¸ ë“±ë¡
+		// ----mainView----
+		//mainView.btn_input.addActionListener(this);        ---  ì •ë³´ì…ë ¥ ë²„íŠ¼ / ë‚˜ì¤‘ì— ê²Œì„ ëë‚˜ê³  ë¶ˆëŸ¬ì˜¤ì
+		mainView.btn_rainfall.addActionListener(this);
 
-			GamerVO vo = new GamerVO(0, id);
+		// ----inputForm----
+		form.bt_submit.addActionListener(this);
+		// -----playview-----
+		play.btn_back.addActionListener(this);
 
-			GamerDAO dao = new GamerDAO();
-			if (dao.insert(vo)) {
-				form.showMsg("ÀÔ·Â¼º°ø!!");
+		// ì…ë ¥í¼ì˜ ìš°ì¸¡ìƒë‹¨ 'X'ë²„íŠ¼ í´ë¦­ì‹œ ë©”ì¸í™”ë©´ìœ¼ë¡œ ì´ë™
+		form.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
 				form.setVisible(false);
 				mainView.setVisible(true);
 			}
-		} 
-		else if (ob == mainView.btn_rainfall) {// ¸ŞÀÎºä ºñ³»¸®±â ¹öÆ° Å¬¸¯
+		});
+	}
+
+	public void actionPerformed(ActionEvent e) {// ì´ë²¤íŠ¸ ì²˜ë¦¬ë¶€(ìš”ì²­ ë¶„ì„)
+		Object ob = e.getSource();// ì´ë²¤íŠ¸ ì†ŒìŠ¤ì˜ ë ˆí¼ëŸ°ìŠ¤ ì–»ì–´ì˜¤ê¸°
+		
+		
+//		if (ob == mainView.btn_input) {//                  ë©”ì¸ë·° ì…ë ¥ë²„íŠ¼ í´ë¦­ / ë‚˜ì¤‘ì— ê²Œì„ ëë‚˜ê³  ë¶ˆëŸ¬ì˜¤ì
+//			mainView.setVisible(false);
+//			form.setVisible(true);
+//		} else if (ob == form.bt_submit) {// ì…ë ¥í¼ ì…ë ¥ë²„íŠ¼ í´ë¦­
+//			// from : ì…ë ¥í¼ ë·°, to : DB
+//			String id = form.tf_id.getText();
+//			int score = 0;
+//			GamerVO vo = new GamerVO(id, score);
+//
+//			GamerDAO dao = new GamerDAO();
+//			if (dao.insert(vo)) {
+//				form.showMsg("ì…ë ¥ì„±ê³µ!!");
+//				form.setVisible(false);
+//				mainView.setVisible(true);
+//			}
+//		} 
+		
+		
+		if (ob == mainView.btn_rainfall) {// ë©”ì¸ë·° ë¹„ë‚´ë¦¬ê¸° ë²„íŠ¼ í´ë¦­
 			mainView.setVisible(false);
 			play.setVisible(true);
+		} else if (ob == play.btn_back) {
+			mainView.setVisible(true);
+			play.setVisible(false);
 		}
+		
 	}
 
 	public static void main(String[] args) {
