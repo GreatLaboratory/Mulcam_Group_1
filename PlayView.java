@@ -145,32 +145,3 @@ public class PlayView extends JFrame {
 		
 	}
 }
-
-class drop extends JLabel implements Runnable{
-	
-	JLabel drop1, drop2, drop3, drop4, drop5;
-	
-	public drop(JPanel on) {
-		
-		drop1.setText("첫 번째 문자");
-		drop1.setBounds((int)(Math.random()), 0, 20, 10);
-		drop2.setText("첫 번째 문자");
-		drop2.setBounds((int)(Math.random()), 0, 20, 10);
-		drop3.setText("첫 번째 문자");
-		drop3.setBounds((int)(Math.random()), 0, 20, 10);
-		drop4.setText("첫 번째 문자");
-		drop4.setBounds((int)(Math.random()), 0, 20, 10);
-		drop5.setText("첫 번째 문자");
-		drop5.setBounds((int)(Math.random()), 0, 20, 10);
-		
-		on.add(drop1);
-		on.add(drop2);
-		on.add(drop3);
-		on.add(drop4);
-		on.add(drop5);
-	}
-
-	@Override
-	public void run() {
-	}
-}
