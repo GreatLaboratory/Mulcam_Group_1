@@ -5,21 +5,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import com.mulcam.typing_game.model.GamerDAO;
-import com.mulcam.typing_game.model.GamerVO;
 import com.mulcam.typing_game.view.InputForm;
 import com.mulcam.typing_game.view.MainView;
 import com.mulcam.typing_game.view.PlayView;
+import com.mulcam.typing_game.view.RankingView;
 
 public class Controller implements ActionListener {
 	MainView mainView;
 	InputForm form;
 	PlayView play;
-
+	RankingView rank;
+	
 	public Controller() {
 		mainView = new MainView();
 		form = new InputForm();
 		play = new PlayView();
+		rank = new RankingView();
 		eventUp();
 	}
 
