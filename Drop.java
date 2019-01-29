@@ -5,14 +5,8 @@ import javax.swing.JLabel;
 public class Drop extends JLabel implements Runnable{
 	 
 	public Drop() {
-		setText("������");
+		setText("가나다");
 	}
-//	public drop(String string) {
-//		setText(string);
-//	}
-	
-	
-
 	@Override
 	public void run() {
 		
@@ -22,7 +16,8 @@ public class Drop extends JLabel implements Runnable{
 				
 				setLocation ( i ,j );
 				try {
-					Thread.sleep(50);
+					Thread.sleep(100 - 2*(PlayView.sec / 5) ); // 수정한 부분
+									// 5의 배수의 시간이 흐를 때마다 점점 속도증가
 					//System.out.println("ch");
 				} catch (Exception e) {
 					// TODO: handle exception
@@ -30,6 +25,4 @@ public class Drop extends JLabel implements Runnable{
 			}
 		}
 	}//run
-
-
 }
