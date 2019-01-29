@@ -1,11 +1,15 @@
-package game;
+package com.mulcam.typing_game.view;
 
 import javax.swing.JLabel;
 
+import com.mulcam.typing_game.model.WordsDAO;
+
 public class Drop extends JLabel implements Runnable{
-	 
+	WordsDAO dao;
 	public Drop() {
-		setText("가나다");
+		dao = new WordsDAO();
+		setText(dao.select());
+		
 	}
 	@Override
 	public void run() {
