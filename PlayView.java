@@ -1,4 +1,4 @@
-package com.mulcam.typing_game.view;
+package game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,67 +24,74 @@ import javax.swing.Timer;
 public class PlayView extends JFrame {
 	
 	JPanel LowerPanel, UpperPanel, PlayPanel;
-	
-	JTextField input_text;
-	JLabel la_life, la_level, la_score, la_best, la_time, la_notice;
-	
+//	
+	JTextField input_text = new JTextField (40);
+	JLabel lifeLabel, levelLabel, scoreLabel, bestLabel, timeLabel, noticeLabel;
+//	
 	BorderLayout bd = new BorderLayout();
-	
-	public JButton btn_back;
-	JButton btn_over;
-	
-	int sec = 10;
+//	
+	public JButton backButton;
+	JButton overButton;
+//	
+	int sec = 60;
 	
 	boolean isitthefirst = true;
 	boolean onlyfortimer = true;
 	
+	Drop d = new Drop();
+	
 	public PlayView() {
+				
 		LowerPanel = new JPanel ();
 		UpperPanel = new JPanel ();
 		PlayPanel = new JPanel ();
-		input_text = new JTextField (40);
-		la_life = new JLabel ("Life : â˜… â˜… â˜…");
-		la_level = new JLabel ("Level : â˜… â˜… â˜…");
-		la_score = new JLabel ("Score : â˜… â˜… â˜…");
-		la_best = new JLabel ("Best Score : â˜… â˜… â˜…");
-		la_time = new JLabel ("Time Left");
 		
-		btn_back = new JButton(" << ");
+		lifeLabel = new JLabel ("Life : ¡Ú ¡Ú ¡Ú");
+		levelLabel = new JLabel ("Level : ¡Ú ¡Ú ¡Ú");
+		scoreLabel = new JLabel ("Score : ¡Ú ¡Ú ¡Ú");
+		bestLabel = new JLabel ("Best Score : ¡Ú ¡Ú ¡Ú");
+		timeLabel = new JLabel ("Time Left");
+		
+		backButton = new JButton(" << ");
 	//UpperPanel============================
 	UpperPanel.setLayout(new FlowLayout(1,20,10));
 
-	UpperPanel.add(btn_back);
-	UpperPanel.add(la_level);
-	UpperPanel.add(la_score);
-	UpperPanel.add(la_best);
-	UpperPanel.add(la_time);
+	UpperPanel.add(backButton);
+	UpperPanel.add(levelLabel);
+	UpperPanel.add(scoreLabel);
+	UpperPanel.add(bestLabel);
+	UpperPanel.add(timeLabel);
 	
 	UpperPanel.setBackground(Color.BLACK);
 	
-	la_level.setForeground(Color.white);
-	la_score.setForeground(Color.white);
-	la_best.setForeground(Color.white);
-	la_time.setForeground(Color.white);
+	levelLabel.setForeground(Color.white);
+	scoreLabel.setForeground(Color.white);
+	bestLabel.setForeground(Color.white);
+	timeLabel.setForeground(Color.white);
 	
 	// PlayPanel=============================
 	
 	PlayPanel.setLayout(null);
+	   d.setBounds(0, 0, 100, 30);
+	  PlayPanel.add(d);
+	  
+	  new Thread(d).start();
 	
-	la_notice = new JLabel("ì‹œìž‘í•˜ë ¤ë©´ ì•„ë¬´ ê¸€ìžë‚˜ ìž…ë ¥í•´ì£¼ì„¸ìš”");
-	la_notice.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
-	la_notice.setHorizontalAlignment(SwingConstants.CENTER);
-	la_notice.setBounds(105, 247, 383, 60);
-	PlayPanel.add(la_notice);
+	noticeLabel = new JLabel("½ÃÀÛÇÏ·Á¸é ¾Æ¹« ±ÛÀÚ³ª ÀÔ·ÂÇØÁÖ¼¼¿ä");
+	noticeLabel.setFont(new Font("±¼¸²", Font.BOLD, 20));
+	noticeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	noticeLabel.setBounds(105, 247, 383, 60);
+	PlayPanel.add(noticeLabel);
 	
-	btn_over = new JButton("Next Round");
-	btn_over.setBounds(228, 277, 137, 44);
-	PlayPanel.add(btn_over);
-	btn_over.setVisible(false);
+	overButton = new JButton("Next Round");
+	overButton.setBounds(228, 277, 137, 44);
+	PlayPanel.add(overButton);
+	overButton.setVisible(false);
 	
 	// LowerPanel============================
 	
 	LowerPanel.add(input_text);
-	LowerPanel.add(la_life);
+	LowerPanel.add(lifeLabel);
 	
 	// Timer =================================
 	
@@ -94,16 +101,16 @@ public class PlayView extends JFrame {
 			
 			if(sec>0)
 			{sec--;
-			la_time.setText("" + sec);
-			la_time.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));}
-		if(sec<10) {la_time.setForeground(Color.red);};	
+			timeLabel.setText("" + sec);
+			timeLabel.setFont(new Font("±¼¸²", Font.BOLD, 20));}
+		if(sec<10) {timeLabel.setForeground(Color.red);};	
 		}
 	});
 	
 	Timer round_over= new Timer(10000,new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
-			btn_over.setVisible(true);
+		overButton.setVisible(true);
 
 		}
 	});
@@ -115,12 +122,12 @@ public class PlayView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			timer.start();
 			round_over.start();
-			la_notice.setVisible(false);
+			noticeLabel.setVisible(false);
 			input_text.setText("");
 		}
 	});
 	
-	//í”„ë ˆìž„ ì„±ê²© ==============================
+	//ÇÁ·¹ÀÓ ¼º°Ý ==============================
 	
 	getContentPane().add(UpperPanel, bd.NORTH);
 	getContentPane().add(LowerPanel, bd.SOUTH);
@@ -135,31 +142,39 @@ public class PlayView extends JFrame {
 	}
 }
 
-class drop extends JLabel implements Runnable{
-	
-	JLabel drop1, drop2, drop3, drop4, drop5;
-	
-	public drop(JPanel on) {
-		
-		drop1.setText("ì²« ë²ˆì§¸ ë¬¸ìž");
-		drop1.setBounds((int)(Math.random()), 0, 20, 10);
-		drop2.setText("ì²« ë²ˆì§¸ ë¬¸ìž");
-		drop2.setBounds((int)(Math.random()), 0, 20, 10);
-		drop3.setText("ì²« ë²ˆì§¸ ë¬¸ìž");
-		drop3.setBounds((int)(Math.random()), 0, 20, 10);
-		drop4.setText("ì²« ë²ˆì§¸ ë¬¸ìž");
-		drop4.setBounds((int)(Math.random()), 0, 20, 10);
-		drop5.setText("ì²« ë²ˆì§¸ ë¬¸ìž");
-		drop5.setBounds((int)(Math.random()), 0, 20, 10);
-		
-		on.add(drop1);
-		on.add(drop2);
-		on.add(drop3);
-		on.add(drop4);
-		on.add(drop5);
-	}
 
-	@Override
-	public void run() {
-	}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
