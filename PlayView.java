@@ -1,101 +1,81 @@
-package com.mulcam.typing_game.view;
+package com.mulcam.typing_game.control;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import com.mulcam.typing_game.model.GamerDAO;
+import com.mulcam.typing_game.model.GamerVO;
+import com.mulcam.typing_game.view.InputForm;
+import com.mulcam.typing_game.view.MainView;
+import com.mulcam.typing_game.view.PlayView;
 
-//public class PlayView {
-//	public static void main(String[] args) {
-//		new Play_Frame();
-//	}
-//}
+public class Controller implements ActionListener {
+	MainView mainView;
+	InputForm form;
+	PlayView play;
 
-public class PlayView extends JFrame {
-	
-	JPanel LowerPanel, UpperPanel, PlayPanel;
-//	
-	JTextField input_text = new JTextField (40);
-	JLabel lifeLabel, levelLabel, scoreLabel, bestLabel, timeLabel;
-//	
-	BorderLayout bd = new BorderLayout();
-//	
-	JButton backButton;
-//	
-	boolean isitthefirst = true;
-	boolean onlyfortimer = true;
-	
-	public PlayView() {
-		LowerPanel = new JPanel ();
-		UpperPanel = new JPanel ();
-		PlayPanel = new JPanel ();
+	public Controller() {
+		mainView = new MainView();
+		form = new InputForm();
+		play = new PlayView();
+		eventUp();
+	}
+
+	private void eventUp() {// 이벤트 등록
+		// ----mainView----
+		//mainView.btn_input.addActionListener(this);        ---  정보입력 버튼 / 나중에 게임 끝나고 불러오자
+		mainView.btn_rainfall.addActionListener(this);
+
+		// ----inputForm----
+		form.bt_submit.addActionListener(this);
+		// -----playview-----
+		play.btn_back.addActionListener(this);
+
+		// 입력폼의 우측상단 'X'버튼 클릭시 메인화면으로 이동
+		form.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				form.setVisible(false);
+				mainView.setVisible(true);
+			}
+		});
+	}
+
+	public void actionPerformed(ActionEvent e) {// 이벤트 처리부(요청 분석)
+		Object ob = e.getSource();// 이벤트 소스의 레퍼런스 얻어오기
 		
-		lifeLabel = new JLabel ("Life : �� �� ��");
-		levelLabel = new JLabel ("Level : �� �� ��");
-		scoreLabel = new JLabel ("Score : �� �� ��");
-		bestLabel = new JLabel ("Best Score : �� �� ��");
-		timeLabel = new JLabel ("Time Left : ");
 		
-		backButton = new JButton(" << ");
-	//UpperPanel============================
-	UpperPanel.setLayout(new FlowLayout(1,20,10));
-
-	UpperPanel.add(backButton);
-	UpperPanel.add(levelLabel);
-	UpperPanel.add(scoreLabel);
-	UpperPanel.add(bestLabel);
-	UpperPanel.add(timeLabel);
-	
-	UpperPanel.setBackground(Color.BLACK);
-	
-	levelLabel.setForeground(Color.white);
-	scoreLabel.setForeground(Color.white);
-	bestLabel.setForeground(Color.white);
-	timeLabel.setForeground(Color.white);
-	
-	
-	// LowerPanel============================
-	
-	LowerPanel.add(input_text);
-	LowerPanel.add(lifeLabel);
-	
-//	input_text.addActionListener(this); <-- �갡 ����!
-	//������ ���� ==============================
-	
-	add(UpperPanel, bd.NORTH);
-	add(LowerPanel, bd.SOUTH);
-	
-	setSize(600,700);
-	setLocationRelativeTo(null);
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	setResizable(false);
-	setVisible(false);
+//		if (ob == mainView.btn_input) {//                  메인뷰 입력버튼 클릭 / 나중에 게임 끝나고 불러오자
+//			mainView.setVisible(false);
+//			form.setVisible(true);
+//		} else if (ob == form.bt_submit) {// 입력폼 입력버튼 클릭
+//			// from : 입력폼 뷰, to : DB
+//			String id = form.tf_id.getText();
+//			int score = 0;
+//			GamerVO vo = new GamerVO(id, score);
+//
+//			GamerDAO dao = new GamerDAO();
+//			if (dao.insert(vo)) {
+//				form.showMsg("입력성공!!");
+//				form.setVisible(false);
+//				mainView.setVisible(true);
+//			}
+//		} 
+		
+		
+		if (ob == mainView.btn_rainfall) {// 메인뷰 비내리기 버튼 클릭
+			mainView.setVisible(false);
+			play.setVisible(true);
+		} else if (ob == play.btn_back) {
+			mainView.setVisible(true);
+			play.setVisible(false);
+		}
 		
 	}
 
-	
-//    public void timer() {
-//    int k = 60;
-//    while(true)
-//    {
-//    	TimerLabel.setText(""+k);
-//    	try {
-//    		Thread.sleep(1000);
-//    	} catch (InterruptedException e) {
-//    		e.printStackTrace();
-//    	}
-//    	k--; ;
-//    }
-//	}
-
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		timer();  <-- �갡 ����!!! 
-//	}
-
+	public static void main(String[] args) {
+		new Controller();
+	}
 }
