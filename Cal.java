@@ -1,32 +1,34 @@
 package calculating;
+package game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
-import com.mulcam.typing_game.view.Drop;
-import com.mulcam.typing_game.view.PlayView;
-
+import game.PlayView;
+import game.Drop;
 public class Cal extends Thread {
 	private int life = 3;
-		
-	
+	InputForm inputForm;
+	GamerVO gamervo;
 	PlayView playView;
+	static int SCORE;
 	
 	
-	public Cal(PlayView playView) {				// PlayView 클래스와 연결
+	public Cal(PlayView playView,InputForm inputForm) {				// PlayView 클래스와 연결
 		this.playView=playView;
+		this.inputForm=inputForm;
 	}
-	
 	public void life_cut() {	
-	
+		
 		setLife(getLife() - 1);
 		 
 		int N = getLife() ; 			//목숨값에 따라서 LABEL 수정 가능
 		switch (N) {
 		case 3:
 			playView.la_life.setText("Life : ★ ★ ★");
+			
 			//add(la);
 			break;
 		case 2:
@@ -36,13 +38,19 @@ public class Cal extends Thread {
 			playView.la_life.setText("Life :  ★ ");
 			break;
 		case 0:
-			int T = PlayView.sec;
+			SCORE = PlayView.sec; // static 변수에 sec값 전달
 			playView.la_life.setText("END") ;
-	
 			playView.la_notice.setVisible(true);
-			playView.la_notice.setText("GAME OVER    TIME : " + T + " sec");
+			playView.la_notice.setText("GAME OVER    TIME : " + SCORE + " sec");
+			inputForm.setVisible(true);
+			playView.d_array[0].setVisible(false);
+			playView.d_array[1].setVisible(false);
+			playView.d_array[2].setVisible(false);
+			playView.d_array[3].setVisible(false);
 			break;
-		default : break;
+		default :
+
+			break;
 			}
 			
 	}
