@@ -24,7 +24,7 @@ public class RankingView extends JFrame {
 	 */
 	public RankingView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 537, 743);
+		setBounds(150, 50, 537, 743);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
