@@ -1,5 +1,6 @@
 package com.mulcam.typing_game.view;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
@@ -17,7 +18,8 @@ public class Drop extends JLabel implements Runnable {
 	public Drop(Cal c,int i) {
 		this.c= c;
 		dao = new WordsDAO();
-		setText(dao.select(i*15));	
+		setText(dao.select(i*15));
+		setFont(new Font("Sans", Font.BOLD, 20));
 	}
 
 	@Override
@@ -29,7 +31,7 @@ public class Drop extends JLabel implements Runnable {
 				if(j == 580) {
 					c.life_cut();
 				}
-				    setLocation(i, j);
+				    setBounds(i, j, 200, 30);
 				
 				    Thread.sleep(100- 5*(PlayView.sec / 5)); // 수정한 부분
 //					Thread.sleep(200 - (PlayView.sec / 5) ); // 수정한 부분
