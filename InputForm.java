@@ -12,42 +12,40 @@ public class InputForm extends JFrame {
 
 	public JButton bt_submit, bt_cancel;
 
-	public InputForm() {
-		setTitle("ÀÔ·ÂÆû");
-		la_id = new JLabel("ÀÌ¸§");
+	public InputForm() { // ìƒì„±ì
+		setTitle("ë­í‚¹ì— ì €ì¥í•˜ê¸°");
+		la_id = new JLabel("ì´ë¦„");
 
 		tf_id = new JTextField();
 
-		bt_submit = new JButton("ÀÔ·Â");
-		bt_cancel = new JButton("Ãë¼Ò");
+		bt_submit = new JButton("ì…ë ¥");
+		bt_cancel = new JButton("ì·¨ì†Œ");
 
 		setLayout(null);
 
-		la_id.setBounds(30, 30, 40, 30);
+		la_id.setBounds(40, 30, 40, 30);
 
-		tf_id.setBounds(70, 30, 80, 30);
+		tf_id.setBounds(85, 30, 140, 30);
 
-		bt_submit.setBounds(30, 180, 60, 30);
-		bt_cancel.setBounds(100, 180, 60, 30);
+		bt_submit.setBounds(30, 100, 60, 30);
+		bt_cancel.setBounds(160, 100, 60, 30);
 
 		add(la_id);
 		add(tf_id);
 		add(bt_submit);
 		add(bt_cancel);
 
-		setBounds(620, 220, 200, 280);
-		 setVisible(false);
+		setBounds(620, 200, 265, 190);
+		 setVisible(true);
 		setResizable(false);
 		 setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-	}// »ı¼ºÀÚ
-
-	public void initForm() {// ÀÔ·ÂÆû ÃÊ±âÈ­
-		setTitle("ÀÔ·ÂÆû");
-		bt_submit.setText("ÀÔ·Â");
-
+	}// ìƒì„±ì
+	
+	public void initForm() {// ì…ë ¥í¼ ì´ˆê¸°í™”
+		setTitle("ì…ë ¥í¼");
+		bt_submit.setText("ì…ë ¥");
 		tf_id.setText("");
-
 		tf_id.requestFocus();
 	}// initForm
 
