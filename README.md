@@ -30,15 +30,15 @@
 > <hr>조원 : 김명관 - *DB구축 및 연동* ,  김범찬 - *GUI 및 SW구현* , 양주호 - *DB 및 SW 구현* </hr>
 > <hr>[기여도] : "https://github.com/veonico/Mulcam_Group_1/pulse"
 ---
-# 어떤 환경과 스킬을 가지고 접근 (OS,언어,서버,tools등)
+# 개발 환경 정보
 > 1. Java JDK 8.0 기반 개발 환경과 Eclipse IDE 환경
 > 2. Oracle 11 및 MyBatis 3.5의 DB 환경
 > 3. Github 협업 환경
 > 4. Window 기반 개발환경
 ---
-# DB설계와 클래스 설계
+# DB 설계와 SW 클래스 구성
 ---
-# 세부적인 기능 설명 (게이머입장!)
+# 세부적인 기능 설명 
 ---
 # 데이터에 대한 유효성 검사 정리 발표(어떠어떠한 부분에 적용했는지)
 ---
