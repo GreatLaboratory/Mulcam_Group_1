@@ -1,5 +1,5 @@
 package com.mulcam.typing_game.control;
-package game;
+//package game;
 
 
 import java.awt.event.ActionEvent;
@@ -14,17 +14,17 @@ import java.awt.event.WindowEvent;
 //import com.mulcam.typing_game.view.PlayView;
 
 
-import game.*;
+//import game.*;
 
 public class Controller implements ActionListener {
 	MainView mainView;
-	//InputForm form;
+	InputForm form;
 	PlayView play;
 	RankingView rank; // 랭킹 
 	
 	public Controller() {
 		mainView = new MainView();
-	//	form = new InputForm();
+		form = new InputForm();
 		play = new PlayView();
 		rank = new RankingView(); // 랭킹
 		eventUp();
@@ -40,6 +40,11 @@ public class Controller implements ActionListener {
 		mainView.btn_rank.addActionListener(this); // 메인에서 랭킹 볼 수 있게 추가해놈
 		rank.btn_main.addActionListener(this);
 		
+		// -----InputForm------ 랭킹 정보 입력받음
+		
+		//form.bt_cancel.addActionListener(this);
+		//form.bt_submit.addActionListener(this);
+		
 		// -----playview-----
 		play.btn_back.addActionListener(this);
 
@@ -52,22 +57,47 @@ public class Controller implements ActionListener {
 			}
 		});
 	}
-
 	public void actionPerformed(ActionEvent e) {// 이벤트 처리부(요청 분석)
 		Object ob = e.getSource();// 이벤트 소스의 레퍼런스 얻어오기
+
+//		if (ob == mainView.btn_input) {//                  메인뷰 입력버튼 클릭 / 나중에 게임 끝나고 불러오자
+//			mainView.setVisible(false);
+//			form.setVisible(true);
+//		} else if (ob == form.bt_submit) {// 입력폼 입력버튼 클릭
+//			// from : 입력폼 뷰, to : DB
+//			String id = form.tf_id.getText();
+//			int score = 0;
+//			GamerVO vo = new GamerVO(id, score);
+//
+//			GamerDAO dao = new GamerDAO();
+//			if (dao.insert(vo)) {
+//				form.showMsg("입력성공!!");
+//				form.setVisible(false);
+//				mainView.setVisible(true);
+//			}
+//		} 
+		if (ob == form.bt_submit) {// 랭킹에 이름 추가하게 해야함
+			form.setVisible(false);
+			rank.setVisible(true);
+		} 
+		else if (ob == form.bt_cancel) { 
+			mainView.setVisible(true);
+			form.setVisible(false);
+		}
 		
 		if (ob == mainView.btn_rank) {// 랭킹 버튼 클릭
 			mainView.setVisible(false);
 			rank.setVisible(true);
 		} 
-		else if (ob == rank.btn_main) { 
+		else if (ob == rank.btn_main) { //다시 메인으로 돌아가야하는데 못하는 중
 			mainView.setVisible(true);
 			rank.setVisible(false);
 		}
-		if (ob == mainView.btn_rainfall) {// 메인뷰 비내리기 버튼 클릭
+		else if (ob == mainView.btn_rainfall) {// 메인뷰 비내리기 버튼 클릭
 			mainView.setVisible(false);
 			play.setVisible(true);
-		} else if (ob == play.btn_back) {
+		} 
+		else if (ob == play.btn_back) {
 			mainView.setVisible(true);
 			play.setVisible(false);
 		}
