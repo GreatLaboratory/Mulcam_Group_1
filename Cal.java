@@ -5,46 +5,42 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
+import com.mulcam.typing_game.view.Drop;
 import com.mulcam.typing_game.view.PlayView;
 
-public class Cal implements ActionListener {
+public class Cal extends Thread {
 	private int life = 3;
-
-	public static String input;		
-	public static String drop ; 
+		
 	
 	PlayView playView;
 	
-	public Cal(PlayView playView) {				// PlayView Å¬·¡½º¿Í ¿¬°á
+	
+	public Cal(PlayView playView) {				// PlayView í´ë˜ìŠ¤ì™€ ì—°ê²°
 		this.playView=playView;
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		input = e.getActionCommand();
-		//System.out.println("action Input="+ input);		// GUI¿¡¼­ °ªÀ» ÀÔ·Â¹Ş´Â´Ù.
-		if(!input.equals(drop)) {
-			setLife(getLife() - 1);
-			 
-			int N = getLife() ; 			//¸ñ¼û°ª¿¡ µû¶ó¼­ LABEL ¼öÁ¤ °¡´É
-			switch (N) {
-			case 3:
-				playView.la_life.setText("Life : ¡Ú ¡Ú ¡Ú");
-				//add(la);
-				break;
-			case 2:
-				playView.la_life.setText("Life : ¡Ú ¡Ú");
-				break;
-			case 1:
-				playView.la_life.setText("Life : ¡Ú");
-				break;
-			default:
-				playView.la_life.setText("END") ; 
-				break;
+	public void life_cut() {	
+	
+		setLife(getLife() - 1);
+		 
+		int N = getLife() ; 			//ëª©ìˆ¨ê°’ì— ë”°ë¼ì„œ LABEL ìˆ˜ì • ê°€ëŠ¥
+		switch (N) {
+		case 3:
+			playView.la_life.setText("Life : â˜… â˜… â˜…");
+			//add(la);
+			break;
+		case 2:
+			playView.la_life.setText("Life : â˜…  â˜… ");
+			break;
+		case 1:
+			playView.la_life.setText("Life :  â˜… ");
+			break;
+		default:
+			playView.la_life.setText("END") ;
+		
+			break;
 			}
-		}//if
-		playView.input_text.setText("");
+			
 	}
 			
 	public void LifeView() {
