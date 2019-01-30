@@ -18,9 +18,6 @@ import javax.swing.Timer;
 
 import com.mulcam.typing_game.model.WordsDAO;
 
-import calculating.Cal;	// 채점 및 변환 프로그램과 연동
-
-
 public class PlayView extends JFrame {
 	
 	JPanel LowerPanel, UpperPanel, PlayPanel;
@@ -37,7 +34,9 @@ public class PlayView extends JFrame {
 	static int sec = 0; // 스테틱으로 해놔야됨
 	
 	boolean isitthefirst = false; // 원랜 false였음
-	boolean onlyfortimer = true;
+	boolean is_the_first_running = false ;
+	boolean is_the_second_running = false ;
+	boolean is_the_thrid_running = false ;
 	
 	Cal c;// = new Cal(null) ;		// 채점 프로그램과 연결
 	
@@ -56,10 +55,10 @@ public class PlayView extends JFrame {
 		
 		c = new Cal(this); // 채점 연산자 
 		
-		 d = new Drop(c);
-		 d1 = new Drop(c);
-		 d2 = new Drop(c);
-		 d3 = new Drop(c);
+		 d = new Drop(c, 0);
+		 d1 = new Drop(c, 1);
+		 d2 = new Drop(c, 2);
+		 d3 = new Drop(c, 3);
 		
 		 d_array =  new Drop[4];
 		  d_array[0]=d;
@@ -118,12 +117,12 @@ public class PlayView extends JFrame {
 		  for(Drop d : d_array) {
 		  d.setBounds(0,0,100,30);
 		  PlayPanel.add(d);
-		  d.setVisible(false);
+		  d.setVisible(true);
 	  }
 		
-	  d1.setText(dao.select());
-	  d2.setText(dao.select());
-	  d3.setText(dao.select());
+	  d1.setText(dao.select(15));
+	  d2.setText(dao.select(30));
+	  d3.setText(dao.select(45));
 	
 	  la_notice = new JLabel("시작하려면 아무 글자나 입력해주세요");
 	  la_notice.setFont(new Font("굴림", Font.BOLD, 20));
@@ -148,9 +147,9 @@ public class PlayView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			sec++;
 			// 시간 이렇게 정한 이유는 그래야 간격이 좀 맞는 것 같아서, 수정해도 ㄱㅊ
-			  if ( PlayView.sec==20 )	  {t_array[1].start(); d_array[1].setVisible(true);}
-			  if ( PlayView.sec==15)	 {t_array[2].start(); d_array[2].setVisible(true);}
-			  if ( PlayView.sec==10)	  {t_array[3].start(); d_array[3].setVisible(true);}
+			  if ( PlayView.sec==20)	 {t_array[1].start(); d_array[1].setVisible(true); }
+			  if ( PlayView.sec==15)	 {t_array[2].start(); d_array[2].setVisible(true); }
+			  if ( PlayView.sec==10) 	 {t_array[3].start(); d_array[3].setVisible(true); }
 			  la_time.setText("" + sec);
 
 		if(sec<10) {la_time.setForeground(Color.red);} 	
@@ -183,14 +182,13 @@ public class PlayView extends JFrame {
 
 				d_array[i].setLocation(0,0);
 			//	d_array[i].setVisible(false);
-				d_array[i].setText(dao.select());
+				d_array[i].setText(dao.select(i*15));
 
 				t_array[i].interrupt();
 				t_array[i] = new Thread(d_array[i]);
 				t_array[i].start();//첫번째 쓰레드~마지막쓰레드 시작!
-				System.out.println(t_array[i].isInterrupted());
-				input_text.setText("");
 			}
+			input_text.setText("");
 			
 				
 			
