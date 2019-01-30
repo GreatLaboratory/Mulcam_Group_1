@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import com.mulcam.typing_game.model.WordsDAO;
+
 import calculating.Cal;	// 채점 및 변환 프로그램과 연동
 
 
@@ -23,7 +25,7 @@ public class PlayView extends JFrame {
 	
 	JPanel LowerPanel, UpperPanel, PlayPanel;
 //	
-	JTextField input_text = new JTextField (40);
+	public JTextField input_text = new JTextField (40);
 	public JLabel la_life,  la_level, la_score, la_best, la_time, la_notice; // public 추가
 //	
 	BorderLayout bd = new BorderLayout();
@@ -37,24 +39,16 @@ public class PlayView extends JFrame {
 	boolean isitthefirst = false; // 원랜 false였음
 	boolean onlyfortimer = true;
 	
-	Cal c;		// 채점 프로그램과 연결
+	Cal c;// = new Cal(null) ;		// 채점 프로그램과 연결
 	
-	Drop d = new Drop();
-	Drop d1 = new Drop();
-	Drop d2 = new Drop();
-	Drop d3 = new Drop();
+	Drop d,d1,d2,d3;
 	
-	Drop [] d_array = {d, d1, d2, d3};
-
-	Thread t = new Thread (d);
-	Thread t1 = new Thread (d1);
-	Thread t2 = new Thread (d2);
-	Thread t3 = new Thread (d3);
-
-	Thread [] t_array = {t,t1,t2,t3};
+	Drop [] d_array; 
+	
+	Thread [] t_array; 
 	
 	public PlayView() {
-				dao = new WordsDAO();
+		dao = new WordsDAO();
 		LowerPanel = new JPanel ();
 		UpperPanel = new JPanel ();
 		PlayPanel = new JPanel ();
@@ -62,13 +56,30 @@ public class PlayView extends JFrame {
 		
 		c = new Cal(this); // 채점 연산자 
 		
-		la_life = new JLabel ("Life : ★ ★ ★");
-		 la_level = new JLabel ("Level : ★ ★ ★");
-		 la_score = new JLabel ("Score : ★ ★ ★");
-		 la_best = new JLabel ("Best Score : ★ ★ ★");
-		 la_time = new JLabel ("Time Left");
+		 d = new Drop(c);
+		 d1 = new Drop(c);
+		 d2 = new Drop(c);
+		 d3 = new Drop(c);
 		
-		 btn_back = new JButton(" << ");
+		 d_array =  new Drop[4];
+		  d_array[0]=d;
+		  d_array[1]=d1;
+		  d_array[2]=d2;
+		  d_array[3]=d3;
+		  
+		 t_array = new Thread[d_array.length];
+		 for (int i = 0; i < d_array.length; i++) {
+			 t_array[i]=new Thread(d_array[i]);
+		 } 
+		
+		 
+		la_life = new JLabel ("Life : ★ ★ ★");
+		la_level = new JLabel ("Level : ★ ★ ★");
+		la_score = new JLabel ("Score : ★ ★ ★");
+		la_best = new JLabel ("Best Score : ★ ★ ★");
+		la_time = new JLabel ("Time Left");
+		
+		btn_back = new JButton(" << ");
 	//UpperPanel============================
 	UpperPanel.setLayout(new FlowLayout(1,20,10));
 
@@ -154,8 +165,8 @@ public class PlayView extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String written ;
-			if(isitthefirst == false) {
-				 t.start(); // 첫번째 쓰레드 시작!
+			if(!isitthefirst) {
+				 t_array[0].start(); // 첫번째 쓰레드 시작!
 				 isitthefirst = true;}
 
 				 d.setVisible(true);
@@ -176,11 +187,13 @@ public class PlayView extends JFrame {
 
 				t_array[i].interrupt();
 				t_array[i] = new Thread(d_array[i]);
-				t_array[i].start();
+				t_array[i].start();//첫번째 쓰레드~마지막쓰레드 시작!
 				System.out.println(t_array[i].isInterrupted());
+				input_text.setText("");
 			}
-			input_text.setText("");
-	
+			
+				
+			
 			}
 		}
 	});
