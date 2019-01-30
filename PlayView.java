@@ -34,9 +34,6 @@ public class PlayView extends JFrame {
 	static int sec = 0; // 스테틱으로 해놔야됨
 	
 	boolean isitthefirst = false; // 원랜 false였음
-	boolean is_the_first_running = false ;
-	boolean is_the_second_running = false ;
-	boolean is_the_thrid_running = false ;
 	
 	Cal c;// = new Cal(null) ;		// 채점 프로그램과 연결
 	
@@ -117,7 +114,7 @@ public class PlayView extends JFrame {
 		  for(Drop d : d_array) {
 		  d.setBounds(0,0,100,30);
 		  PlayPanel.add(d);
-		  d.setVisible(true);
+		  d.setVisible(false);
 	  }
 		
 	  d1.setText(dao.select(15));
