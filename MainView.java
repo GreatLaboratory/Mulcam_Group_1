@@ -1,4 +1,5 @@
 package com.mulcam.typing_game.view;
+//package game;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,7 +12,7 @@ import javax.swing.SwingConstants;
 public class MainView extends JFrame {
 
 	private JPanel contentPane;
-	public JButton  btn_rainfall;
+	public JButton  btn_rainfall, btn_rank; // 랭킹 버튼 추가함
 	private JLabel EnglishTypingGame;
 
 	/**
@@ -39,6 +40,10 @@ public class MainView extends JFrame {
 		btn_rainfall.setBounds(184, 542, 185, 118);
 		contentPane.add(btn_rainfall);
 
+		btn_rank = new JButton("Ranking View"); // 랭킹보기위한 버튼 추가
+		btn_rank.setFont(new Font("굴림", Font.PLAIN, 20));
+		btn_rank.setBounds(594, 542, 185, 118);
+		contentPane.add(btn_rank);
 
 		setVisible(true);
 	}
