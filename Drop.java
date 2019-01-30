@@ -1,10 +1,12 @@
 package com.mulcam.typing_game.view;
 
+import java.awt.Font;
+
 import javax.swing.JLabel;
 
 import com.mulcam.typing_game.model.WordsDAO;
 
-import calculating.Cal;
+//import calculating.Cal;
 
 public class Drop extends JLabel implements Runnable {
 	WordsDAO dao;
@@ -12,11 +14,10 @@ public class Drop extends JLabel implements Runnable {
 //	int i = (int) (Math.random() * 550 + 1);
 	int j =0;
 	Cal c ;
-	public Drop(Cal c) {
+	public Drop(Cal c,int i) {
 		this.c= c;
 		dao = new WordsDAO();
-		setText(dao.select());
-		
+		setText(dao.select(i*15));	
 	}
 
 	@Override
