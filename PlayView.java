@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.mulcam.typing_game.model.WordsDAO;
 
@@ -29,7 +32,6 @@ public class PlayView extends JFrame {
 //	
 	public WordsDAO dao;
 	public JButton btn_back;
-	JButton btn_over; // 일단 생성만하고 아래엔 주석처리해놓음
 //	
 	static int sec = 0; // 스테틱으로 해놔야됨
 	
@@ -42,6 +44,9 @@ public class PlayView extends JFrame {
 	Drop [] d_array; 
 	
 	Thread [] t_array; 
+	
+	int sum = 0;
+	int score = 0;
 	
 	public PlayView() {
 		dao = new WordsDAO();
@@ -75,7 +80,12 @@ public class PlayView extends JFrame {
 		la_best = new JLabel ("Best Score : ★ ★ ★");
 		la_time = new JLabel ("Time Left");
 		
+		la_best.setFont(new Font("굴림", Font.PLAIN, 15));
+		la_score.setFont(new Font("굴림", Font.PLAIN, 15));
+		la_time.setFont(new Font("굴림", Font.BOLD, 15));
+		
 		btn_back = new JButton(" << ");
+		
 	//UpperPanel============================
 	UpperPanel.setLayout(new FlowLayout(1,20,10));
 
@@ -91,27 +101,12 @@ public class PlayView extends JFrame {
 	 la_score.setForeground(Color.white);
 	 la_best.setForeground(Color.white);
 	 la_time.setForeground(Color.white);
-	
+	 
 	// PlayPanel=============================
 	
 	PlayPanel.setLayout(null);
-	//   d.setBounds(0, 0, 100, 30);
-	//  PlayPanel.add(d);
-//	
-//	  d1.setBounds(0, 0, 100, 30); // 두번째 쓰레드 생성만해놓음
-//	  d1.setText(dao.select());
-//	  PlayPanel.add(d1);
-//	  d2.setBounds(0, 0, 100, 30); // 세번째 쓰레드 생성만해놓음
-//	  d2.setText(dao.select());
-//	  PlayPanel.add(d2);
-//	  
-//	  d3.setBounds(0, 0, 100, 30); // 네번째 쓰레드 생성만해놓음
-//	  d3.setText(dao.select());
-//	  PlayPanel.add(d3);
-//	  
-//	  new Thread(d).start(); // 첫번째 쓰레드 시작!
-
 		  for(Drop d : d_array) {
+			  
 		  d.setBounds(0,0,100,30);
 		  PlayPanel.add(d);
 		  d.setVisible(false);
@@ -127,10 +122,33 @@ public class PlayView extends JFrame {
 	  la_notice.setBounds(105, 247, 383, 60);
 	PlayPanel.add(la_notice);
 	
-//	overButton = new JButton("Next Round");
-	//overButton.setBounds(228, 277, 137, 44);
-	//PlayPanel.add(overButton);
-	//overButton.setVisible(false);
+	GroupLayout gl_UpperPanel = new GroupLayout(UpperPanel);
+	gl_UpperPanel.setHorizontalGroup(
+		gl_UpperPanel.createParallelGroup(Alignment.LEADING)
+			.addGroup(gl_UpperPanel.createSequentialGroup()
+				.addGap(24)
+				.addComponent(btn_back)
+				.addGap(27)
+				.addComponent(la_best, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addComponent(la_score, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(la_time)
+				.addGap(49))
+	);
+	gl_UpperPanel.setVerticalGroup(
+		gl_UpperPanel.createParallelGroup(Alignment.LEADING)
+			.addGroup(gl_UpperPanel.createSequentialGroup()
+				.addContainerGap()
+				.addGroup(gl_UpperPanel.createParallelGroup(Alignment.BASELINE)
+					.addComponent(la_best, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btn_back)
+					.addComponent(la_time, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+					.addComponent(la_score, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	);
+	UpperPanel.setLayout(gl_UpperPanel);
+	
 	
 	// LowerPanel============================
 	
@@ -169,7 +187,8 @@ public class PlayView extends JFrame {
 				 
 			timer.start();
 			la_notice.setVisible(false);
-			//=====================================	
+			
+	//=====================================	
 
 
 			written = e.getActionCommand();
@@ -184,9 +203,16 @@ public class PlayView extends JFrame {
 				t_array[i].interrupt();
 				t_array[i] = new Thread(d_array[i]);
 				t_array[i].start();//첫번째 쓰레드~마지막쓰레드 시작!
+				
+				int dscore = e.getActionCommand().length();
+				sum += dscore;
+				score = sum * sec;
+				la_score.setText("Score :" + score);
 			}
 			input_text.setText("");
-			
+	
+	//=====================================
+		
 				
 			
 			}
