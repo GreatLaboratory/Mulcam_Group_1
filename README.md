@@ -27,8 +27,11 @@
 ---
 # 참여 인원과 업무
 > 조장 : 권해민 - *내부 SW 구현*  
-> 조원 : 김명관 - *DB구축 및 연동* ,  김범찬 - *GUI 및 SW구현* , 양주호 - *DB 및 SW 구현*   
-> [기여도] : "https://github.com/veonico/Mulcam_Group_1/pulse"
+> 조원 :   
+>>김명관 - *DB구축 및 연동*  
+>>김범찬 - *GUI 및 SW구현*  
+>>양주호 - *DB 및 SW 구현*   
+>> [기여도 by Github] : "https://github.com/veonico/Mulcam_Group_1/pulse"
 ---
 # 개발 환경 정보
 > 1. Java JDK 8.0 기반 개발 환경과 Eclipse IDE 환경
@@ -37,6 +40,14 @@
 > 4. Window 기반 개발환경
 ---
 # DB 설계와 SW 클래스 구성
+> 2개의 DB, MVC 기반 Java SW 클래스 구성
+>> DB_1 : 사용자 ID와 게임 플레이 후 전적을 기록
+>> DB_2 : 게임에 사용될 단어 저장
+>> 
+>>
+>>
+>>
+>>
 ---
 # 세부적인 기능 설명 
 ---
