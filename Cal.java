@@ -35,10 +35,14 @@ public class Cal extends Thread {
 		case 1:
 			playView.la_life.setText("Life :  ★ ");
 			break;
-		default:
+		case 0:
+			int T = PlayView.sec;
 			playView.la_life.setText("END") ;
-		
+	
+			playView.la_notice.setVisible(true);
+			playView.la_notice.setText("GAME OVER    TIME : " + T + " sec");
 			break;
+		default : break;
 			}
 			
 	}
