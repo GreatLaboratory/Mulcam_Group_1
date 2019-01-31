@@ -1,5 +1,5 @@
 package calculating;
-package game;
+//package game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,10 +38,23 @@ public class Cal extends Thread {
 			playView.la_life.setText("Life :  ★ ");
 			break;
 		case 0:
-			SCORE = PlayView.sec; // static 변수에 sec값 전달
+		
+			//String sec = PlayView.sec+"";
+			SCORE = PlayView.sec;
+			
 			playView.la_life.setText("END") ;
 			playView.la_notice.setVisible(true);
 			playView.la_notice.setText("GAME OVER    TIME : " + SCORE + " sec");
+//			inputForm.setVisible(true);
+			System.out.println("sec>>>"+SCORE);
+			//System.out.println("gamervo>>>"+gamervo);//null
+			//gamervo.setScore(sec);
+			
+			//control.callBackScore(sec); //컨트롤러에게 점수 알려주기
+			
+			
+			//System.out.println("T = "+gamervo.getScore());
+			
 			inputForm.setVisible(true);
 			playView.d_array[0].setVisible(false);
 			playView.d_array[1].setVisible(false);
