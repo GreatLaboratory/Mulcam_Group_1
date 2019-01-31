@@ -92,7 +92,7 @@
 > word.sql : 게임에 사용될 단어 저장  
 
 ## Java 기반 MVC 구성의 SW 클래스 구성
-![class 2](https://user-images.githubusercontent.com/42127568/52026399-16fd8880-254b-11e9-8b06-9f7beed33a14.PNG)  
+![class](https://user-images.githubusercontent.com/42127568/52027202-d94e2f00-254d-11e9-9a1a-5ea4578852c7.png)
 >  
 > 아래 모든 Package의 Class와 DB를 구동하는 Controller package 구성  
 >  
