@@ -72,9 +72,6 @@
 >김범찬 - *GUI 및 SW구현*  
 >  
 >양주호 - *DB 및 SW 구현*   
-
-## 팀원 기여도
-> [기여도 by Github] : "https://github.com/veonico/Mulcam_Group_1/pulse"
 ---
 # 개발 환경 정보
 > 1. Java JDK 8.0 기반 개발 환경과 Eclipse IDE 환경
