@@ -6,9 +6,8 @@
 	<insert id="insert">
 		insert into gamer values(#{id}, #{score})
 	</insert>
-<!-- 	<select id="select_id" resultType="String">select id from names</select> -->
 	<select id="select" resultType="com.mulcam.typing_game.model.GamerVO">
-	    select id, score from names order by score desc
+	    select id, score from gamer order by score desc
 	</select>
 
 </mapper>
