@@ -107,7 +107,8 @@ public class Controller implements ActionListener {
 			mainView.setVisible(false);
 		} 
 		else if (ob == play.btn_back) {
-			mainView.setVisible(true);
+			//mainView.setVisible(true);
+			new Controller();
 			play.setVisible(false);
 		}
 		
