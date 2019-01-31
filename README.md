@@ -106,8 +106,8 @@
 > Drop 창을 누르면 게임화면으로 전환  
 
 ## Game Play View  
-![rank2](https://user-images.githubusercontent.com/42127568/52026056-eb2dd300-2549-11e9-9bf4-c8e524980f44.png)  
-  
+![default](https://user-images.githubusercontent.com/42127568/52026057-ecf79680-2549-11e9-8889-0f5b028144e7.PNG)  
+
 > Text 입력창에 Enter 입력 시 실행  
 >  
 > 한 화면에 최대 4개의 글자가 하단 프레임까지 떨어짐  
