@@ -92,10 +92,19 @@
 > word.sql : 게임에 사용될 단어 저장  
 
 ## Java 기반 MVC 구성의 SW 클래스 구성
->
->
->
->
+![class 2](https://user-images.githubusercontent.com/42127568/52026399-16fd8880-254b-11e9-8b06-9f7beed33a14.PNG)  
+>  
+> 아래 모든 Package의 Class와 DB를 구동하는 Controller package 구성  
+>  
+> 플레이어의 전적을 관리하는 DB와 연동하기 위한 gamer Pakage 구성  
+>  
+> SW의 GUI를 담당하는 View Package 집합 구성
+>  
+> 게임 내 기능을 구현하고 단어 DB와 연동하기 위한 game Package 구성  
+>  
+> DB와 Java SW 연결에 필요한 Mapper 구성  
+>  
+> 연동에 필요한 명령어를 구성한 mybatis Package 
 ---
 # 세부적인 기능 설명 
 ## Main View 
