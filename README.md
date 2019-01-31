@@ -49,18 +49,22 @@
 >양주호 - *DB 및 SW 구현*   
 
 ## 팀원 기여도
->> [기여도 by Github] : "https://github.com/veonico/Mulcam_Group_1/pulse"
+> [기여도 by Github] : "https://github.com/veonico/Mulcam_Group_1/pulse"
 ---
 # 개발 환경 정보
 > 1. Java JDK 8.0 기반 개발 환경과 Eclipse IDE 환경
+>  
 > 2. Oracle 11 및 MyBatis 3.5의 DB 환경
+>  
 > 3. Github 협업 환경
+>  
 > 4. Window 기반 개발환경
 ---
 # DB 설계와 SW 클래스 구성
-> Oracle 11 기반 DB 2개로 구성
->> DB_1 : 사용자 ID와 게임 플레이 후 전적을 기록  
->> DB_2 : 게임에 사용될 단어 저장  
+## Oracle 11 기반 DB 2개로 구성  
+> gamer.sql : 사용자 ID와 게임 플레이 후 전적을 기록  
+>  
+> word.sql : 게임에 사용될 단어 저장  
 
 > Java 기반 MVC 구성의 SW 클래스 구성
 >>
