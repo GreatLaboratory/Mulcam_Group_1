@@ -106,8 +106,8 @@
 > Drop 창을 누르면 게임화면으로 전환  
 
 ## Game Play View  
-![default](https://user-images.githubusercontent.com/42127568/52026057-ecf79680-2549-11e9-8889-0f5b028144e7.PNG)  
-
+![1](https://user-images.githubusercontent.com/42127568/52026224-6f805600-254a-11e9-8874-b63dfb3ab871.PNG)  
+  
 > Text 입력창에 Enter 입력 시 실행  
 >  
 > 한 화면에 최대 4개의 글자가 하단 프레임까지 떨어짐  
@@ -124,7 +124,7 @@
   
   
 ## Rank View
-![default](https://user-images.githubusercontent.com/42127568/52026057-ecf79680-2549-11e9-8889-0f5b028144e7.PNG)  
+![rank2](https://user-images.githubusercontent.com/42127568/52026229-71e2b000-254a-11e9-866f-06b683729570.png)  
   
 > 상위 4명의 ID와 전적을 제공  
 >  
