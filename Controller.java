@@ -1,5 +1,5 @@
 package com.mulcam.typing_game.control;
-//package game;
+package game;
 
 
 import java.awt.event.ActionEvent;
