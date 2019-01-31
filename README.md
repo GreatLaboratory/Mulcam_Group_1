@@ -114,14 +114,16 @@
 # 데이터에 대한 유효성 검사 정리 발표(어떠어떠한 부분에 적용했는지)
     
 ![word_db](https://user-images.githubusercontent.com/42127568/52022754-ad2ab200-253d-11e9-968e-262bda57e7a8.PNG)  
+>  
 > 단어 DB 상에서 단어의 중복을 막기 위해 각 단어에 고유한 번호를 Primary Key를 통해 부여  
 >  
 > 각 단어의 DB 입력 간 Null 값을 제한한기 위하여 Not Null을 부여하여 유효성 확보  
 >  
-![gamer_db](https://user-images.githubusercontent.com/42127568/52022755-adc34880-253d-11e9-9e36-22e789104646.PNG)
->
->
->
+![gamer_db](https://user-images.githubusercontent.com/42127568/52022755-adc34880-253d-11e9-9e36-22e789104646.PNG)  
+>  
+> 플레이어의 이름에 대해서 고유값 지정을 위해 Columm에 Primary Key 지정  
+>  
+> 플레이어의 전적에 대해 Null값을 방지하기 위해 Not Null을 
 ---
 # 시연
 > 지원자???  
