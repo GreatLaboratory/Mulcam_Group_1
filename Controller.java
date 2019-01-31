@@ -1,20 +1,18 @@
 package com.mulcam.typing_game.control;
-package game;
-
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 
-//import com.mulcam.typing_game.model.GamerDAO;
-//import com.mulcam.typing_game.model.GamerVO;
-//import com.mulcam.typing_game.view.InputForm;
-//import com.mulcam.typing_game.view.MainView;
-//import com.mulcam.typing_game.view.PlayView;
-
-
-import game.*;
+import com.mulcam.typing_game.model.Cal;
+import com.mulcam.typing_game.model.GamerDAO;
+import com.mulcam.typing_game.model.GamerVO;
+import com.mulcam.typing_game.view.InputForm;
+import com.mulcam.typing_game.view.MainView;
+import com.mulcam.typing_game.view.PlayView;
+import com.mulcam.typing_game.view.RankingView;
 
 public class Controller implements ActionListener {
 	MainView mainView;
@@ -84,18 +82,21 @@ public class Controller implements ActionListener {
 			else form.showMsg("이름을 입력해주세요");
 			//rank.setVisible(true);
 		} 
-//		else if (ob == form.bt_submit) {// 랭킹에 이름 추가하게 해야함
-//			rank.setVisible(true);
-//			form.setVisible(false);
-//		} 
 		else if (ob == form.bt_cancel) { 
 			mainView.setVisible(true);
 			form.setVisible(false);
-		}
-		
-		if (ob == mainView.btn_rank) {// 랭킹 버튼 클릭
-			rank.setVisible(true);
+			
+		}else if (ob == mainView.btn_rank) {// 랭킹 버튼 클릭
+			GamerDAO dao = new GamerDAO();
+			List<GamerVO> list= dao.select();
+			
+			for(int i=0; i<list.size(); i++) {
+				rank.la_id[i].setText(list.get(i).getId());
+				rank.la_score[i].setText(list.get(i).getScore()+"");
+			}
+			
 			mainView.setVisible(false);
+			rank.setVisible(true);
 		} 
 		else if (ob == rank.btn_main) { //다시 메인으로 돌아가야하는데 못하는 중
 			mainView.setVisible(true);
