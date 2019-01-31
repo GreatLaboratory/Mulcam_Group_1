@@ -87,9 +87,9 @@
 ---
 # DB 설계와 SW 클래스 구성
 ## Oracle 11 기반 DB 2개로 구성  
-> gamer.sql : 사용자 ID와 게임 플레이 후 전적을 기록  
+> gamer.sql : 사용자 ID와 게임 플레이 후 결과 데이터 저장
 >  
-> word.sql : 게임에 사용될 단어 저장  
+> word.sql : 게임에 사용될 단어 데이터 저장  
 
 ## Java MVC기반의 패키지구성과 SW구현
 ![class](https://user-images.githubusercontent.com/42127568/52027202-d94e2f00-254d-11e9-9a1a-5ea4578852c7.png)
