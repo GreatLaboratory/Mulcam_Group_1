@@ -102,9 +102,12 @@
 > 이는 gamer.sql에 저장된 값에서 호출
 ---
 # 데이터에 대한 유효성 검사 정리 발표(어떠어떠한 부분에 적용했는지)
-https://user-images.githubusercontent.com/42127568/52022754-ad2ab200-253d-11e9-968e-262bda57e7a8.PNG
+    
+![word_db](https://user-images.githubusercontent.com/42127568/52022754-ad2ab200-253d-11e9-968e-262bda57e7a8.PNG)
   
-https://user-images.githubusercontent.com/42127568/52022755-adc34880-253d-11e9-9e36-22e789104646.PNG---
+![gamer_db](https://user-images.githubusercontent.com/42127568/52022755-adc34880-253d-11e9-9e36-22e789104646.PNG)
+
+---
 # 시연
 > 지원자???  
 > 꼬우십니까? 직접 하십시오.  
