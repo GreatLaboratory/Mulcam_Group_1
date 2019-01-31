@@ -102,7 +102,7 @@
 > 이는 gamer.sql에 저장된 값에서 호출
 ---
 # 데이터에 대한 유효성 검사 정리 발표(어떠어떠한 부분에 적용했는지)
-![Word DB](C:\Users\Hae min Kwon\Desktop)
+![Alt Text](C:\Users\Hae min Kwon\Desktop)
 ---
 # 시연
 > 지원자???  
