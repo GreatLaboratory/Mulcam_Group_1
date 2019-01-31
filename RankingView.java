@@ -1,16 +1,14 @@
 package com.mulcam.typing_game.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JList;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
 
 public class RankingView extends JFrame {
 
@@ -19,6 +17,13 @@ public class RankingView extends JFrame {
 	JLabel la_first_id, la_second_id, la_third_id, la_forth_id;
 	JLabel la_first_score, la_second_score, la_third_score, la_forth_score;
 	public JButton btn_main;
+	
+	public JLabel[] la_id;
+	public JLabel[] la_score;
+	
+	
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -63,50 +68,51 @@ public class RankingView extends JFrame {
 		contentPane.add(la_forth);
 		
 		//------------------DB에서 ID 받아오기-----------------------
-		la_first_id = new JLabel("ID");
+		
+		la_first_id = new JLabel("NULL");
 		la_first_id.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_first_id.setHorizontalAlignment(SwingConstants.CENTER);
 		la_first_id.setBounds(127, 231, 207, 64);
 		contentPane.add(la_first_id);
 		
-		la_second_id = new JLabel("ID");
+		la_second_id = new JLabel("NULL");
 		la_second_id.setHorizontalAlignment(SwingConstants.CENTER);
 		la_second_id.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_second_id.setBounds(127, 307, 207, 64);
 		contentPane.add(la_second_id);
 		
-		la_third_id = new JLabel("ID");
+		la_third_id = new JLabel("NULL");
 		la_third_id.setHorizontalAlignment(SwingConstants.CENTER);
 		la_third_id.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_third_id.setBounds(127, 383, 207, 64);
 		contentPane.add(la_third_id);
 		
-		la_forth_id = new JLabel("ID");
+		la_forth_id = new JLabel("NULL");
 		la_forth_id.setHorizontalAlignment(SwingConstants.CENTER);
 		la_forth_id.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_forth_id.setBounds(127, 459, 207, 64);
 		contentPane.add(la_forth_id);
 		
 		//-----------------------DB에서 SCORE 받아오기---------------------------
-		la_first_score = new JLabel("SCORE");
+		la_first_score = new JLabel("NULL");
 		la_first_score.setHorizontalAlignment(SwingConstants.CENTER);
 		la_first_score.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_first_score.setBounds(336, 231, 148, 64);
 		contentPane.add(la_first_score);
 		
-		la_second_score = new JLabel("SCORE");
+		la_second_score = new JLabel("NULL");
 		la_second_score.setHorizontalAlignment(SwingConstants.CENTER);
 		la_second_score.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_second_score.setBounds(336, 307, 148, 64);
 		contentPane.add(la_second_score);
 		
-		la_third_score = new JLabel("SCORE");
+		la_third_score = new JLabel("NULL");
 		la_third_score.setHorizontalAlignment(SwingConstants.CENTER);
 		la_third_score.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_third_score.setBounds(336, 383, 148, 64);
 		contentPane.add(la_third_score);
 		
-		la_forth_score = new JLabel("SCORE");
+		la_forth_score = new JLabel("NULL");
 		la_forth_score.setHorizontalAlignment(SwingConstants.CENTER);
 		la_forth_score.setFont(new Font("굴림", Font.PLAIN, 30));
 		la_forth_score.setBounds(336, 459, 148, 64);
@@ -118,5 +124,17 @@ public class RankingView extends JFrame {
 		
 		
 		setVisible(false);
+		
+		toArray();
+	}
+	
+    private void toArray() {
+		
+		JLabel[] temp_id = {la_first_id, la_second_id, la_third_id, la_forth_id};
+		JLabel[] temp_score = {la_first_score, la_second_score, la_third_score, la_forth_score};
+		
+		la_id = temp_id;
+		la_score = temp_score;
+		
 	}
 }
