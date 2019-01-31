@@ -1,4 +1,5 @@
 package com.mulcam.typing_game.view;
+package game;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,8 +36,8 @@ public class InputForm extends JFrame {
 		add(bt_submit);
 		add(bt_cancel);
 
-		setBounds(620, 200, 265, 190);
-		 setVisible(true);
+		setBounds(520, 400, 265, 190);
+		 setVisible(false);
 		setResizable(false);
 		 setDefaultCloseOperation(EXIT_ON_CLOSE);
 
