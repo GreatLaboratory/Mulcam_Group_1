@@ -106,8 +106,7 @@
 > Drop 창을 누르면 게임화면으로 전환  
 
 ## Game Play View  
-![1](https://user-images.githubusercontent.com/42127568/52026045-e832e280-2549-11e9-8a4f-9016c799062a.PNG)
-![default](https://user-ima  
+![rank2](https://user-images.githubusercontent.com/42127568/52026056-eb2dd300-2549-11e9-9bf4-c8e524980f44.png)  
   
 > Text 입력창에 Enter 입력 시 실행  
 >  
