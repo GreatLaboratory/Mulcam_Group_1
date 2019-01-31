@@ -3,7 +3,17 @@
 # 발표자 소개 
 > 1조 조장 권해민
 ---
-# 프로젝트 개요 및 개발 동기
+# 프로젝트 개요 및 개발 동기  
+  
+## 2-1 . 개발 동기 : 개발자가 지녀야할 능력 중 하나가 바로 영타 실력  
+
+
+
+
+
+
+## 2-2 프로젝트 개요  
+  
 > 1. Java기반 SW 개발에 적합한 형태를 고려 
 >  
 > 2. 과정 간 교육받은 Oracle과 MyBatis를 활용 고려
@@ -103,10 +113,15 @@
 ---
 # 데이터에 대한 유효성 검사 정리 발표(어떠어떠한 부분에 적용했는지)
     
-![word_db](https://user-images.githubusercontent.com/42127568/52022754-ad2ab200-253d-11e9-968e-262bda57e7a8.PNG)
-  
+![word_db](https://user-images.githubusercontent.com/42127568/52022754-ad2ab200-253d-11e9-968e-262bda57e7a8.PNG)  
+> 단어 DB 상에서 단어의 중복을 막기 위해 각 단어에 고유한 번호를 Primary Key를 통해 부여  
+>  
+> 각 단어의 DB 입력 간 Null 값을 제한한기 위하여 Not Null을 부여하여 유효성 확보  
+>  
 ![gamer_db](https://user-images.githubusercontent.com/42127568/52022755-adc34880-253d-11e9-9e36-22e789104646.PNG)
-
+>
+>
+>
 ---
 # 시연
 > 지원자???  
